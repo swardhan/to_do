@@ -13,8 +13,17 @@
     <% tasks.each do |todo| %>
 
     <li>
-    <% if todo.urgent %>
-      <span class="urgent"><%= todo.task %></span>
+    <% if todo.important %>
+    <input type="checkbox" name="important" checked="checked">
+    <% else %>
+    <input type="checkbox" name="important">
+    <% end %>
+    <% if todo.urgent && todo.done %>
+    <span class="urgent strikethrough"><%= todo.task %></span>
+    <% elsif todo.urgent %>
+    <span class="urgent"><%= todo.task %></span>
+    <% elsif todo.done %>
+    <span class="strikethrough"><%= todo.task %></span>
     <% else %>
     <span><%= todo.task %></span>
     <% end %>
@@ -39,6 +48,9 @@
   </ul>
 
 <style type="text/css">
+ul, li {
+    list-style-type: none;
+}
 .urgent {
   color: red;
 }
