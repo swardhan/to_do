@@ -43,6 +43,10 @@
         <input type = "hidden" name="task" value ="<%= todo.task%>">
         <input type ="submit" value="Important">
         </form>
+        <form action="/delete" method="POST">
+        <input type = "hidden" name="task1" value ="<%= todo.task %>">
+        <input type ="submit" value="delete">
+        </form>
     </li>
     <% end %>
   </ul>

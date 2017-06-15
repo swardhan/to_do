@@ -35,6 +35,21 @@ post '/add' do
   return redirect '/'
 end
 
+post '/delete' do
+
+  new_arr = []
+  task_del = params["task1"]
+  tasks.each do |todo|
+    if todo.task != task_del
+      new_arr << todo
+    end
+  end
+  tasks = new_arr
+
+  return redirect '/'
+end
+
+
 post '/done' do
    task = params[:task]
    tasks.each do |todo|
