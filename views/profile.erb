@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello</title>
+</head>
+<body>
+
+  <% x=5 %>
+
+  <h1>Hello
+    <% 10.times do%>
+    <br>
+    <% x+=2  %>
+    <%= x.to_s.humanize  %>
+    <%end%>
+    <br>
+    <%= time %>
+  </h1>
+
+</body>
+</html>

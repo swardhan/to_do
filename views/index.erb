@@ -1,0 +1,53 @@
+<DOCTYPE! html>
+<html>
+<head>
+  <title>To-Do App</title>
+</head>
+<body>
+  <form action="/add" method="post">
+    <input type="text" name="task" autofocus autocomplete="off"/>
+    <br>
+    <input type="submit" value="Add task" />
+  </form>
+  <ul>
+    <% tasks.each do |todo| %>
+
+    <li>
+    <% if todo.urgent %>
+      <span class="urgent"><%= todo.task %></span>
+    <% else %>
+    <span><%= todo.task %></span>
+    <% end %>
+      <form action="/done" method="POST">
+      <input type = "hidden" name="task" value ="<%= todo.task%>">
+        <% if todo.done %>
+        <input type = "submit" value ="UnDone">
+        <% else %>
+        <input type = "submit" value ="Done">
+        <% end %>
+      </form>
+        <form action="/urgent" method="POST">
+        <input type = "hidden" name="task" value ="<%= todo.task%>">
+        <input type ="submit" value="Urgent">
+        </form>
+        <form action="/important" method="POST">
+        <input type = "hidden" name="task" value ="<%= todo.task%>">
+        <input type ="submit" value="Important">
+        </form>
+    </li>
+    <% end %>
+  </ul>
+
+<style type="text/css">
+.urgent {
+  color: red;
+}
+form {
+  display: inline;
+}
+.strikethrough {
+  text-decoration: line-through;
+}
+</style>
+</body>
+</html>
