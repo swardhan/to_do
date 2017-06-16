@@ -6,9 +6,10 @@
 <body>
   <form action="/add" method="post">
     <input type="text" name="task" autofocus autocomplete="off"/>
-    <br>
-    <input type="submit" value="Add task" />
+    <input class="btn" type="submit" value="Add task" />
   </form>
+  <br>
+  <br>
   <ul>
     <% tasks.each do |todo| %>
 
@@ -52,8 +53,25 @@
   </ul>
 
 <style type="text/css">
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
 ul, li {
     list-style-type: none;
+}
+
+li{
+  margin-left: -60px;
 }
 .urgent {
   color: red;

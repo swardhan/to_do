@@ -12,14 +12,6 @@ end
 
 tasks = []
 
-t1 = Todo.new "First"
-t2 = Todo.new "Second"
-t3 = Todo.new "Thrid"
-
-tasks << t1
-tasks << t2
-tasks << t3
-
 get '/' do
   data = Hash.new
   data[:tasks] = tasks
@@ -31,7 +23,10 @@ post '/add' do
   puts params
   task = params[:task]
   todo = Todo.new task
+  task.strip!
+  unless task.empty?
   tasks << todo
+  end
   return redirect '/'
 end
 
@@ -47,6 +42,7 @@ post '/delete' do
   tasks = new_arr
 
   return redirect '/'
+
 end
 
 
